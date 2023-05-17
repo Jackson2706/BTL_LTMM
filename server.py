@@ -1,5 +1,5 @@
 import socket
-
+from DES import bin2hex, generate_key, encrypt
 HOST = "127.0.0.1"
 SERVER_PORT = 65432
 FORMAT = "utf-8"
@@ -20,9 +20,14 @@ while True:
 
     print(f"client address: {addr}")
     print("conn: ", conn.getsockname())
+    rkb, rk = generate_key()
+    print(rkb)
     message = conn.recv(1024).decode(FORMAT)
     if len(message):
-        print(f"message: {message}")
+        rkb_rev = rkb[::-1]
+        rk_rev = rk[::-1]
+        text = bin2hex(encrypt(message, rkb_rev, rk_rev))
+        print(f"message: {text}")
         check_point = False
     else:
         check_point = True
