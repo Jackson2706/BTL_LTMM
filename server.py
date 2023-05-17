@@ -12,16 +12,15 @@ s.listen()
 print("SERVER SIDE")
 print(f"server: {HOST} {SERVER_PORT}")
 
-conn, addr = s.accept()
 
-print(f"client address: {addr}")
-print("conn: ", conn.getsockname())
 while True:
+    conn, addr = s.accept()
+
+    print(f"client address: {addr}")
+    print("conn: ", conn.getsockname())
     message = conn.recv(1024).decode(FORMAT)
     print(len(message))
     if len(message):
         print(f"message: {message}")
     else:
-        break
-
-    
+        conn.close()
