@@ -11,16 +11,20 @@ s.listen()
 
 print("SERVER SIDE")
 print(f"server: {HOST} {SERVER_PORT}")
+conn, addr = s.accept()
 
-
+check_point = False
 while True:
-    conn, addr = s.accept()
+    if check_point:
+        conn, addr = s.accept()
 
     print(f"client address: {addr}")
     print("conn: ", conn.getsockname())
     message = conn.recv(1024).decode(FORMAT)
-    print(len(message))
     if len(message):
         print(f"message: {message}")
+        check_point = False
     else:
+        check_point = True
         conn.close()
+    print("---"*20)

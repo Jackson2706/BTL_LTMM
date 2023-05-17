@@ -16,8 +16,8 @@ while True:
     message = input("message: ")
 
     client.sendall(message.encode(FORMAT))
-    check = input("Continue? Y/N")
-    if check in ("Y", "y"):
-        continue
-    else:
-        break
+    # check = input("Continue? Y/N  ")
+    # if check in ("Y", "y"):
+    #     continue
+    # else:
+    #     break
