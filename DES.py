@@ -234,8 +234,8 @@ def encrypt(pt, rkb, rk):
 		# Swapper
 		if(i != 15):
 			left, right = right, left
-		print("Round ", i + 1, " ", bin2hex(left),
-			" ", bin2hex(right), " ", rk[i])
+		# print("Round ", i + 1, " ", bin2hex(left),
+		# 	" ", bin2hex(right), " ", rk[i])
 
 	# Combination
 	combine = left + right
